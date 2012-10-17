@@ -20,10 +20,31 @@
 		}
 	</style>
 
-	<script type="text/javascript" src="lib/impact/impact.js"></script>
-	<script type="text/javascript" src="lib/game/main.js"></script>
+<script type="text/javascript">
+		g1 = {};
+function loadImpact() {
+    var scripts = [
+    	'lib/impact/impact.js',
+    	'lib/game/main.js'
+    ];
+    for (var i = 0; i < scripts.length; ++i) {
+        var s = document.createElement('script');
+        s.setAttribute('type', 'text/javascript');
+        s.setAttribute('charset', 'utf-8');
+        s.setAttribute('src', scripts[i]);
+        
+        document.getElementsByTagName('body')[0].appendChild(s);
+    }
+}
+
+function onDomLoad() {
+	//alert("DOM ready")
+	//document.addEventListener("deviceready", onDeviceReady, false);
+	loadImpact();
+}
+</script>
 </head>
-<body>
+<body onload="onDomLoad()">
 	<canvas id="canvas">
 	</canvas>
 </body>
